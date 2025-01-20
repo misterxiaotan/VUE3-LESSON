@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="module">
+        // import { reactive, effect, ref } from '/node_modules/@vue/reactivity/dist/reactivity.esm-browser.js'
+        import { reactive, effect, ref } from './reactivity.js'
+        const obj = { name: 'tlf', age: 18, flag: true }
+        const state = reactive(obj)
+        const flag = ref(false);
+        console.log(flag)
+
+        effect(() => {
+            console.log('触发依赖')
+            app.innerHTML = flag.value ? 'tlf' : '18'
+        })
+        setTimeout(() => {
+            flag.value = true;
+        }, 1000)
+    </script>
+</body>
+
+</html>
